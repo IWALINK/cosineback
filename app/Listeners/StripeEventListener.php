@@ -14,6 +14,7 @@ use App\Models\Cart;
 use Stripe\Invoice;
 use App\Mail\OrderEmail;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\ReferralEarnings;
 
 class StripeEventListener
 {
@@ -92,6 +93,32 @@ class StripeEventListener
 
                 // Send order confirmation email
                 Mail::to($user->email)->queue(new OrderEmail($order));
+
+                // Check if this is the user's first order
+                $previousOrders = Orders::where('user_id', $user->id)
+                    ->where('status', 'completed')
+                    ->where('id', '!=', $order->id)
+                    ->count();
+
+                // Send email to referrer only if this is the user's first order
+                if ($previousOrders === 0 && $user->referred_by) {
+                    $referrer = User::find($user->referred_by);
+                    if ($referrer) {
+                        // Calculate earnings based on referral count
+                        $referralCount = User::where('referred_by', $referrer->id)->count();
+                        $earnings = 25; // Default earnings
+                        if ($referralCount >= 50) {
+                            $earnings = 75;
+                        } elseif ($referralCount >= 10) {
+                            $earnings = 50;
+                        }
+
+                        Mail::to($referrer->email)->queue(new ReferralEarnings([
+                            'full_name' => $user->full_name,
+                            'amount' => $earnings . ' CHF'
+                        ]));
+                    }
+                }
 
                 // Clear the user's cart using user ID
                 Cart::where('user_id', $user->id)->delete();

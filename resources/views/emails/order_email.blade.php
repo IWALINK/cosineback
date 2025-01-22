@@ -286,7 +286,7 @@
                         <td height="30" style="font-size:30px;line-height:30px;height:30px"> </td>
                       </tr>
                     </table>
-                    <p class="primary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: normal; font-size: 16px; line-height: 25px; Margin-top: 0; Margin-bottom: 0">Bonjour, {{ $order->user_name }}! Votre commande a été confirmée et est en cours de traitement.</p>
+                    <p class="primary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: normal; font-size: 16px; line-height: 25px; Margin-top: 0; Margin-bottom: 0">Bonjour {{ $order->user_name }}! Votre commande a été confirmée et est en cours de traitement.</p>
                     <p class="primary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: normal; font-size: 16px; line-height: 25px; Margin-top: 0; Margin-bottom: 0">
                         Nous vous informons que les modules seront livrés en 2026 et précisons qu'il s'agit d'une pré-vente.
                     </p>

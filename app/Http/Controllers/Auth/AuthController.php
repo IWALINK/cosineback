@@ -18,6 +18,8 @@ use Carbon\Carbon;
 use App\Models\UserSession;
 use Laravel\Sanctum\PersonalAccessToken;
 use App\Models\EmailVerification;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -42,6 +44,7 @@ class AuthController extends Controller
                 'password.mixed' => 'Le mot de passe doit contenir au moins une majuscule et une minuscule.',
                 'password.numbers' => 'Le mot de passe doit contenir au moins un chiffre.',
                 'password.symbols' => 'Le mot de passe doit contenir au moins un caractère spécial.',
+                'referral_code.exists' => 'Le code de parrainage n\'est pas valide.',
             ];
 
             $request->validate([
@@ -57,17 +60,22 @@ class AuthController extends Controller
                         ->numbers()
                         ->symbols()
                 ],
+                'referral_code' => ['nullable', 'string', 'exists:users,referral_code'],
             ], $messages);
 
-
+            // Find referring user if referral code is provided
+            $referred_by = null;
+            if ($request->referral_code) {
+                $referred_by = User::where('referral_code', $request->referral_code)->first()->id;
+            }
             $user = User::create([
                 'full_name' => $request->full_name,
                 'email' => $request->email,
                 'phone_number' => $request->phone_number,
                 'address' => $request->address,
                 'password' => Hash::make($request->password),
+                'referred_by' => $referred_by,
             ]);
-
 
             $email_controller =  new EmailController();
             $unique_code =  $email_controller->index($request->email);
@@ -178,7 +186,8 @@ class AuthController extends Controller
             'otp' => ['required', 'string'],
         ]);
 
-        if (EmailVerification::where("verification_code", "=", $request->otp)
+        if (
+            EmailVerification::where("verification_code", "=", $request->otp)
             ->where('verification_code_end', '>=', date('Y-m-d H:i:s'))->count() == 1
         ) {
             $user = User::where('email',   $user->email)->first();
@@ -208,6 +217,85 @@ class AuthController extends Controller
                 'success' => false,
                 'message' => 'Erreur lors de la récupération du profil'
             ], 401);
+        }
+    }
+
+    public function updateProfile(Request $request)
+    {
+        try {
+            $user = self::get_user($request);
+
+            $messages = [
+                'full_name.min' => 'Le nom complet doit contenir au moins :min caractères.',
+                'full_name.max' => 'Le nom complet ne peut pas dépasser :max caractères.',
+                'email.unique' => 'Cette adresse email est déjà utilisée.',
+                'phone_number.required' => 'Le numéro de téléphone est requis.',
+                'current_password.required' => 'Le mot de passe actuel est requis pour changer le mot de passe.',
+                'password.min' => 'Le mot de passe doit contenir au moins :min caractères.',
+                'password.mixed' => 'Le mot de passe doit contenir au moins une majuscule et une minuscule.',
+                'password.numbers' => 'Le mot de passe doit contenir au moins un chiffre.',
+                'password.symbols' => 'Le mot de passe doit contenir au moins un caractère spécial.',
+                'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
+            ];
+
+            $validator = Validator::make($request->all(), [
+                'full_name' => ['sometimes', 'string', 'min:2', 'max:50'],
+                'email' => ['sometimes', 'email', Rule::unique('users')->ignore($user->id)],
+                'phone_number' => ['sometimes', 'required', 'string', function ($attribute, $value, $fail) {
+                    if (!preg_match('/^\+[1-9]\d{1,14}$/', $value)) {
+                        $fail('Le numéro de téléphone doit être au format international valide.');
+                    }
+                }],
+                'address' => ['sometimes', 'string'],
+                'current_password' => ['required_with:password'],
+                'password' => [
+                    'sometimes',
+                    'confirmed',
+                    Password::min(8)
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols()
+                ],
+            ], $messages);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+
+            // Verify current password if changing password
+            if ($request->has('password')) {
+                if (!Hash::check($request->current_password, $user->password)) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Le mot de passe actuel est incorrect'
+                    ], 422);
+                }
+            }
+
+            // Update user information
+            $user->full_name = $request->full_name ?? $user->full_name;
+            $user->email = $request->email ?? $user->email;
+            $user->phone_number = $request->phone_number ?? $user->phone_number;
+            $user->address = $request->address ?? $user->address;
+
+            if ($request->has('password')) {
+                $user->password = Hash::make($request->password);
+            }
+
+            $user->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Profil mis à jour avec succès'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la mise à jour du profil'
+            ], 500);
         }
     }
 }

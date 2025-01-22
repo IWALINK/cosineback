@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\BankInformationController;
+use App\Http\Controllers\ReferralController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -41,3 +42,9 @@ Route::get('/user/profile', [AuthController::class, 'getProfile']);
 
 Route::get('/bank-information-index', [BankInformationController::class, 'index']);
 Route::post('/bank-information', [BankInformationController::class, 'store']);
+
+Route::get('/referral-code', [ReferralController::class, 'getReferralCode']);
+Route::get('/referral/referrals', [ReferralController::class, 'showReferrals']);
+Route::get('/referral/earnings', [ReferralController::class, 'getReferralEarnings']);
+
+Route::put('/user/profile', [AuthController::class, 'updateProfile']);
