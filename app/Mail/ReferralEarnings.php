@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 
 class ReferralEarnings extends Mailable
 {
@@ -30,6 +31,7 @@ class ReferralEarnings extends Mailable
     {
         return new Envelope(
             subject: 'Nouveau gain de parrainage !',
+            from: new Address(env('MAIL_FROM_ADDRESS'), 'Helioz'),
         );
     }
 

@@ -326,7 +326,7 @@
     class="m-0 p-0 w-full [word-break:break-word] [-webkit-font-smoothing:antialiased] bg-slate-50"
   >
     <div class="hidden">
-        Nouveau gain de parrainage ! &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
+     &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
       &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
       &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
       &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
@@ -417,7 +417,7 @@
 
                     <div>
                       <a
-                        href="http://localhost:3000/account/referral"
+                        href="https://helioz.io/account/referral"
                         class="inline-block px-6 py-4 font-semibold no-underline rounded text-base/none"
                         style="color: #f8fafc; background-color: black"
                       >
