@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000', 'http://192.168.1.160:3000', 'https://helioz.io/'],
+    'allowed_origins' => ['*',],
 
     'allowed_origins_patterns' => [],
 
