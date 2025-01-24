@@ -20,6 +20,7 @@ use Laravel\Sanctum\PersonalAccessToken;
 use App\Models\EmailVerification;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
+use App\Mail\ResetPassword;
 
 class AuthController extends Controller
 {
@@ -40,10 +41,8 @@ class AuthController extends Controller
                 'address.string' => 'L\'adresse doit être une chaîne de caractères.',
                 'password.required' => 'Le mot de passe est requis.',
                 'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
-                'password.min' => 'Le mot de passe doit contenir au moins :min caractères.',
-                'password.mixed' => 'Le mot de passe doit contenir au moins une majuscule et une minuscule.',
-                'password.numbers' => 'Le mot de passe doit contenir au moins un chiffre.',
-                'password.symbols' => 'Le mot de passe doit contenir au moins un caractère spécial.',
+                'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+                'password.regex' => 'Le mot de passe doit contenir au moins une majuscule et un chiffre.',
                 'referral_code.exists' => 'Le code de parrainage n\'est pas valide.',
             ];
 
@@ -55,10 +54,8 @@ class AuthController extends Controller
                 'password' => [
                     'required',
                     'confirmed',
-                    Password::min(8)
-                        ->mixedCase()
-                        ->numbers()
-                        ->symbols()
+                    'min:8',
+                    'regex:/^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$/'
                 ],
                 'referral_code' => ['nullable', 'string', 'exists:users,referral_code'],
             ], $messages);
@@ -231,10 +228,8 @@ class AuthController extends Controller
                 'email.unique' => 'Cette adresse email est déjà utilisée.',
                 'phone_number.required' => 'Le numéro de téléphone est requis.',
                 'current_password.required' => 'Le mot de passe actuel est requis pour changer le mot de passe.',
-                'password.min' => 'Le mot de passe doit contenir au moins :min caractères.',
-                'password.mixed' => 'Le mot de passe doit contenir au moins une majuscule et une minuscule.',
-                'password.numbers' => 'Le mot de passe doit contenir au moins un chiffre.',
-                'password.symbols' => 'Le mot de passe doit contenir au moins un caractère spécial.',
+                'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+                'password.regex' => 'Le mot de passe doit contenir au moins une majuscule et un chiffre.',
                 'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
             ];
 
@@ -251,10 +246,8 @@ class AuthController extends Controller
                 'password' => [
                     'sometimes',
                     'confirmed',
-                    Password::min(8)
-                        ->mixedCase()
-                        ->numbers()
-                        ->symbols()
+                    'min:8',
+                    'regex:/^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$/'
                 ],
             ], $messages);
 
@@ -296,6 +289,65 @@ class AuthController extends Controller
                 'success' => false,
                 'message' => 'Erreur lors de la mise à jour du profil'
             ], 500);
+        }
+    }
+
+    public function send_reset_password_code(Request $request)
+    {
+        $verify_if_email_exist = User::where('email', "=",  $request->email)->count();
+        $email_controller = new EmailController();
+        if ($verify_if_email_exist > 0) {
+            $code = $email_controller->index($request->email);
+            $info = [
+                'requestCode' =>   $code
+            ];
+            Mail::to($request->email)->queue(new ResetPassword($info));
+            //->later(now()->addMinutes(1), new ResetPassword($info));
+            //
+            return "mail have been sent";
+        } else {
+            return response(['errors' => "Aucun compte n'est associé à cet email."], 422);
+        }
+        //  abort(403, 'Unauthorized. The provided credentials do not match our records.');
+    }
+
+    public function update_password_from_email_code(Request $request)
+    {
+        $messages = [
+            'code.required' => 'Le code de vérification est requis.',
+            'code.digits' => 'Le code doit contenir exactement :digits chiffres.',
+            'password.required' => 'Le mot de passe est requis.',
+            'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
+            'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+            'password.regex' => 'Le mot de passe doit contenir au moins une majuscule et un chiffre.',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'code' => ['required', 'string', 'digits:4'],
+            'password' => [
+                    'required',
+                    'confirmed',
+                    'min:8',
+                    'regex:/^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$/'
+                ],
+        ], $messages);
+
+        if ($validator->fails()) {
+            return response(['errors' => $validator->errors()], 422);
+        }
+
+        if (EmailVerification::where("verification_code", "=", $request->code)->where('verification_code_end', '>=', date('Y-m-d H:i:s'))->count() == 1) {
+            User::where(
+                'email',
+                "=",
+                EmailVerification::where("verification_code", "=", $request->code)->where('verification_code_end', '>=', date('Y-m-d H:i:s'))->value("email")
+            )->update(['password' => Hash::make($request->password)]);
+
+            EmailVerification::where("email", "=",  EmailVerification::where("verification_code", "=", $request->code)
+                ->where('verification_code_end', '>=', date('Y-m-d H:i:s'))->value("email"))->delete();
+            return "code updated";
+        } else {
+            return response(['errors' => "This code expire or invalide."], 422);
         }
     }
 }

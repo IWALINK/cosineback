@@ -48,3 +48,6 @@ Route::get('/referral/referrals', [ReferralController::class, 'showReferrals']);
 Route::get('/referral/earnings', [ReferralController::class, 'getReferralEarnings']);
 
 Route::put('/user/profile', [AuthController::class, 'updateProfile']);
+
+Route::post('/reset-password', [AuthController::class, 'send_reset_password_code']);
+Route::post('/reset-password/update', [AuthController::class, 'update_password_from_email_code']);
