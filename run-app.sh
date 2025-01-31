@@ -14,7 +14,7 @@ php artisan route:cache
 php artisan view:cache
 
 # Run any database migrations and force it
-php artisan migrate --force
+php artisan migrate:fresh --force
 php artisan config:clear
 
 
