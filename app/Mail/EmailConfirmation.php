@@ -29,7 +29,7 @@ class EmailConfirmation extends Mailable
     {
         return new Envelope(
             subject: 'Code de vérification',
-            from: new Address(env('MAIL_FROM_ADDRESS'), 'Helioz'),
+            from: new Address(env('MAIL_FROM_ADDRESS'), 'COSINE'),
         );
     }
 
