@@ -21,7 +21,7 @@ class CheckoutController extends Controller
                     function ($attribute, $value, $fail) {
                         $validPriceIds = [
                             env('NEXT_PUBLIC_266_PRICE_ID'),
-                            env('NEXT_PUBLIC_525_PRICE_ID')
+                            //  env('NEXT_PUBLIC_525_PRICE_ID')
                         ];
 
                         if (!in_array($value, $validPriceIds)) {
@@ -45,7 +45,7 @@ class CheckoutController extends Controller
         foreach ($request->line_items as $item) {
             $checkoutItems[$item['price_id']] = $item['quantity'];
             // You'll need to get the actual price from your price list
-            $price = $item['price_id'] === env('NEXT_PUBLIC_266_PRICE_ID') ? 266 : 525;
+            $price = $item['price_id'] === env('NEXT_PUBLIC_266_PRICE_ID') ? 60 : 525;
             $totalAmount += $price * $item['quantity'];
         }
 
