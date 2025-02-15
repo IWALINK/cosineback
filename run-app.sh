@@ -17,7 +17,7 @@ php artisan view:cache
 php artisan migrate --force
 php artisan config:clear
 
-php artisan migrate:fresh --force
+#php artisan migrate:fresh --force
 
 
 
