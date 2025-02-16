@@ -388,9 +388,9 @@
           <tr>
             <td class="w-[552px] max-w-full">
               <div class="my-12 sm:my-8 text-center">
-                <a href="https://helioz.io/">
+                <a href="https://cosinelayer2.com/">
                   <img
-                    src="https://helioz.io/_next/image?url=%2FGrayscale%20Transparent.png&w=256&q=75"
+                    src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75"
                     width="70"
                     alt="Maizzle"
                   />
@@ -417,7 +417,7 @@
 
                     <div>
                       <a
-                        href="https://helioz.io/account/referral"
+                        href="https://cosinelayer2.com/account/referral"
                         class="inline-block px-6 py-4 font-semibold no-underline rounded text-base/none"
                         style="color: #f8fafc; background-color: black"
                       >
@@ -430,7 +430,7 @@
                           >
                         <![endif]-->
                         <span style="mso-text-raise: 16px">
-                          Voir vos gain sur Helioz
+                          Voir vos gain sur COSINE
                         </span>
                         <!--[if mso]>
                           <i class="mso-font-width-[150%]" hidden=""
@@ -455,11 +455,11 @@
                     </div>
 
                     <p class="m-0">
-                      Si vous ne vous êtes pas inscrit à Helioz, vous pouvez
+                      Si vous ne vous êtes pas inscrit à COSINE, vous pouvez
                       ignorer cet e-mail en toute sécurité.
                       <br />
                       <br />
-                      Merci, <br />L'équipe Helioz
+                      Merci, <br />L'équipe COSINE
                     </p>
                   </td>
                 </tr>
@@ -469,9 +469,9 @@
                 <tr>
                   <td class="text-center text-slate-600 text-xs px-6">
                     <div class="my-10 sm:my-8 text-center">
-                      <a href="https://helioz.io/">
+                      <a href="https://cosinelayer2.com/">
                         <img
-                          src="https://helioz.io/_next/image?url=%2FGrayscale%20Transparent.png&w=256&q=75"
+                          src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75"
                           width="70"
                           alt="Maizzle"
                         />

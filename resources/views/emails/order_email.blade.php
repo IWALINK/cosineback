@@ -238,7 +238,7 @@
 </head>
 <body id="body" style="margin: 0; padding: 0; border: 0; background-color: #FEFEFE; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
   <div style="color:transparent;visibility:hidden;opacity:0;font-size:0px;border:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width:0px!important;display:none!important;line-height:0px!important;">
-    <img border="0" width="1" height="1" src="https://helioz.io/_next/image?url=%2FGrayscale%20Transparent.png&w=256&q=75" alt>
+    <img border="0" width="1" height="1" src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75" alt>
   </div>
   <table class="background-container" border="0" cellpadding="0" cellspacing="0" role="presentation" bgcolor="#fefefe" width="100" style="margin: 0; padding: 0; border: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FEFEFE; width: 100%">
     <tr>
@@ -261,8 +261,8 @@
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt">
                             <tr>
                               <td valign="middle" style="color:#000000;font-size:20px;line-height:20px;font-weight:bold;vertical-align:middle">
-                                <a href="https://helioz.io" target="_blank" rel="noreferrer">
-                                  <img src="https://helioz.io/_next/image?url=%2FGrayscale%20Transparent.png&w=256&q=75" alt="Klarna." width="98" height="98" border="0" style="display:block;outline:0;-ms-interpolation-mode:bicubic;width:98px;height:98px">
+                                <a href="https://cosinelayer2.com/" target="_blank" rel="noreferrer">
+                                  <img src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75" alt="Klarna." width="98" height="98" border="0" style="display:block;outline:0;-ms-interpolation-mode:bicubic;width:98px;height:98px">
                                 </a>
                               </td>
                             </tr>
@@ -312,7 +312,7 @@
                       <tr>
                         <td align="left" valign="middle" width="40" style="vertical-align:middle;padding-top:10px;padding-bottom:10px;padding-right:15px">
                           <img src="{{ $item->price->product->images[0] ??
-                          'https://helioz.io/_next/image?url=%2Fmodule-image%2FSTD%20-%20001_Camera009_0001.png&w=1920&q=75' }}" alt width="40" height="40" border="0" style="display:block;outline:0;-ms-interpolation-mode:bicubic;width:40px;height:40px">
+                          'https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75' }}" alt width="40" height="40" border="0" style="display:block;outline:0;-ms-interpolation-mode:bicubic;width:40px;height:40px">
                         </td>
                         <td align="left" valign="middle" style="vertical-align:middle;padding-top:20px;padding-bottom:20px">
                           <span class="primary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: normal; font-size: 16px; line-height: 20px">
@@ -429,8 +429,8 @@
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt">
                             <tr>
                               <td valign="middle" style="color:#000000;font-size:20px;line-height:20px;font-weight:bold;vertical-align:middle">
-                                <a href="https://helioz.io/" target="_blank" rel="noreferrer">
-                                  <img src="https://helioz.io/_next/image?url=%2FGrayscale%20Transparent.png&w=256&q=75" alt="Klarna." width="98" height="98" border="0" style="display:block;outline:0;-ms-interpolation-mode:bicubic;width:98px;height:98px">
+                                <a href="https://cosinelayer2.com/" target="_blank" rel="noreferrer">
+                                  <img src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75" alt="Klarna." width="98" height="98" border="0" style="display:block;outline:0;-ms-interpolation-mode:bicubic;width:98px;height:98px">
                                 </a>
                               </td>
                             </tr>
@@ -472,6 +472,6 @@
       </td>
     </tr>
   </table>
-  <img border="0" width="1" height="1" alt src="https://helioz.io/_next/image?url=%2FGrayscale%20Transparent.png&w=256&q=75">
+  <img border="0" width="1" height="1" alt src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75">
 </body>
 </html>
