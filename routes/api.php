@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\BankInformationController;
 use App\Http\Controllers\ReferralController;
+use App\Http\Controllers\Auth\EmailController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -51,3 +52,5 @@ Route::put('/user/profile', [AuthController::class, 'updateProfile']);
 
 Route::post('/reset-password', [AuthController::class, 'send_reset_password_code']);
 Route::post('/reset-password/update', [AuthController::class, 'update_password_from_email_code']);
+
+Route::post('/contact', [EmailController::class, 'sendContactEmail']);
