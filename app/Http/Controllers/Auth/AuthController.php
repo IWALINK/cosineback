@@ -41,8 +41,8 @@ class AuthController extends Controller
                 'address.string' => 'L\'adresse doit être une chaîne de caractères.',
                 'password.required' => 'Le mot de passe est requis.',
                 'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
-                'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
-                'password.regex' => 'Le mot de passe doit contenir au moins une majuscule et un chiffre.',
+                'password.min' => 'Le mot de passe doit contenir au moins 6 caractères.',
+                'password.regex' => 'Le mot de passe doit contenir au moins une majuscule.',
                 'referral_code.exists' => 'Le code de parrainage n\'est pas valide.',
             ];
 
@@ -54,8 +54,8 @@ class AuthController extends Controller
                 'password' => [
                     'required',
                     'confirmed',
-                    'min:8',
-                    'regex:/^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$/'
+                    'min:6',
+                    'regex:/^(?=.*[A-Z]).*$/'
                 ],
                 'referral_code' => ['nullable', 'string', 'exists:users,referral_code'],
             ], $messages);
@@ -228,8 +228,8 @@ class AuthController extends Controller
                 'email.unique' => 'Cette adresse email est déjà utilisée.',
                 'phone_number.required' => 'Le numéro de téléphone est requis.',
                 'current_password.required' => 'Le mot de passe actuel est requis pour changer le mot de passe.',
-                'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
-                'password.regex' => 'Le mot de passe doit contenir au moins une majuscule et un chiffre.',
+                'password.min' => 'Le mot de passe doit contenir au moins 6 caractères.',
+                'password.regex' => 'Le mot de passe doit contenir au moins une majuscule.',
                 'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
             ];
 
@@ -246,8 +246,8 @@ class AuthController extends Controller
                 'password' => [
                     'sometimes',
                     'confirmed',
-                    'min:8',
-                    'regex:/^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$/'
+                    'min:6',
+                    'regex:/^(?=.*[A-Z]).*$/'
                 ],
             ], $messages);
 
@@ -318,18 +318,18 @@ class AuthController extends Controller
             'code.digits' => 'Le code doit contenir exactement :digits chiffres.',
             'password.required' => 'Le mot de passe est requis.',
             'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
-            'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
-            'password.regex' => 'Le mot de passe doit contenir au moins une majuscule et un chiffre.',
+            'password.min' => 'Le mot de passe doit contenir au moins 6 caractères.',
+            'password.regex' => 'Le mot de passe doit contenir au moins une majuscule.',
         ];
 
         $validator = Validator::make($request->all(), [
             'code' => ['required', 'string', 'digits:4'],
             'password' => [
-                    'required',
-                    'confirmed',
-                    'min:8',
-                    'regex:/^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$/'
-                ],
+                'required',
+                'confirmed',
+                'min:6',
+                'regex:/^(?=.*[A-Z]).*$/'
+            ],
         ], $messages);
 
         if ($validator->fails()) {
