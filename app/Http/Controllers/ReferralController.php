@@ -23,7 +23,8 @@ class ReferralController extends Controller
                 'data' => [
                     'referral_code' => $user->referral_code,
                     'referral_count' => $referralCount,
-                    'referral_link' => env('FRONT_END_URL') . "/p/" . $user->referral_code
+                    'referral_link' => "/p/{$user->referral_code}"
+                    // env('FRONT_END_URL') .
                 ]
             ]);
         } catch (\Exception $e) {
