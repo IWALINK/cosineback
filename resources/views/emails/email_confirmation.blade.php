@@ -140,39 +140,29 @@
                                         Bravo,
                                     </h1>
                                     <p style="margin: 0; line-height: 24px">
-                                        Merci d'avoir créé votre compte.
+                                        {{ __('messages.email_confirmation.thank_you') }}
                                         <br>
                                         <br>
-                                        Entrez ce code pour confirmer que vous êtes le titulaire
-                                        de ce compte:
+                                        {{ __('messages.email_confirmation.message_info') }} :
                                     </p>
                                     <div role="separator" style="line-height: 24px">&zwj;</div>
                                     <div>
                                         <span
                                             style="color: #f8fafc; background-color: #ef4444; display: inline-block; border-radius: 4px; padding: 16px 24px; font-size: 16px; line-height: 1; font-weight: 600; text-decoration: none">
-                                            <!--[if mso]>
-                          <i style="mso-text-raise: 30px"
-                            hidden=""
-                            >&emsp;</i>
-                        <![endif]-->
                                             <span style="mso-text-raise: 16px"> Code: {{ $data['code'] }} </span>
-                                            <!--[if mso]>
-                          <i hidden=""
-                            >&emsp;&#8203;</i>
-                        <![endif]-->
                                         </span>
                                     </div>
-                                    <p>Ce code est valide uniquement pendant 30 minutes.</p>
+                                    <p>{{ __('messages.email_confirmation.valid_for_30_minutes') }}</p>
                                     <div role="separator"
                                         style="height: 1px; line-height: 1px; margin: 32px 0; background-color: #e2e8f0">
                                         &zwj;
                                     </div>
                                     <p style="margin: 0;">
-                                        Si vous ne vous êtes pas inscrit à COSINE, vous
-                                        pouvez ignorer cet e-mail en toute sécurité.
+                                        {{ __('messages.email_confirmation.if_you_did_not_register') }}
                                         <br>
                                         <br>
-                                        Merci, <br>L'équipe COSINE
+                                        {{ __('messages.email_confirmation.thank_you') }}, <br>
+                                        {{ __('messages.email_confirmation.team') }}
                                     </p>
                                 </td>
                             </tr>
@@ -190,20 +180,20 @@
                                         </a>
                                     </div>
                                     <p style="font-style: italic">
-                                        Annule le stress et économise du temps
+                                        {{ __('messages.email_confirmation.cancel_stress_and_save_time') }}
                                     </p>
                                     <p style="cursor: default">
-                                        <a href="https://www.facebook.com/profile.php?id=61562893141673"
+                                        <a href="https://twitter.com/IwalinkSA"
                                             class="hover-important-text-decoration-underline"
-                                            style="color: red; text-decoration: none">Facebook</a>
+                                            style="color: red; text-decoration: none">X</a>
                                         &bull;
-                                        <a href="https://www.linkedin.com/company/104114101/"
+                                        <a href="https://www.youtube.com/@IWALINKSA"
                                             class="hover-important-text-decoration-underline"
-                                            style="color: red; text-decoration: none;">LinkedIn</a>
+                                            style="color: red; text-decoration: none;">YouTube</a>
                                         &bull;
-                                        <a href="https://www.instagram.com/iwalinksa"
+                                        <a href="https://github.com/IWALINK/COSINE-POC-GOLANG"
                                             class="hover-important-text-decoration-underline"
-                                            style="color: red; text-decoration: none;">Instagram</a>
+                                            style="color: red; text-decoration: none;">GitHub</a>
                                     </p>
                                 </td>
                             </tr>

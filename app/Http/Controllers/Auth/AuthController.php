@@ -21,11 +21,22 @@ use App\Models\EmailVerification;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 use App\Mail\ResetPassword;
+use Illuminate\Support\Facades\App;
 
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
+        $locale = App::currentLocale();
+        Log::info('Current locale before: ' . $locale);
+
+        $locale = $request->header('Accept-Language', 'fr');
+        if (! in_array($locale, ['en',  'fr'])) {
+            abort(400);
+        }
+
+        App::setLocale($locale);
+        Log::info('Current locale after: ' . $locale);
         try {
             $messages = [
                 'full_name.required' => 'Le nom complet est requis.',

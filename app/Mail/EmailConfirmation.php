@@ -29,7 +29,7 @@ class EmailConfirmation extends Mailable
     {
         return new Envelope(
             subject: 'Code de vérification',
-            from: new Address(env('MAIL_FROM_ADDRESS'), 'COSINE'),
+            from: new Address(config('mail.from.address') ?? 'noreply@iwalink.ch', 'COSINE'),
         );
     }
 
