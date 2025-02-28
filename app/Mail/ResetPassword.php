@@ -30,8 +30,8 @@ class ResetPassword extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Réinitialisation de votre mot de passe',
-            from: new Address(env('MAIL_FROM_ADDRESS'), 'Helioz'),
+            subject: __('messages.reset_password.subject'),
+            from: new Address(config('mail.from.address'), config('COSINE')),
         );
     }
 

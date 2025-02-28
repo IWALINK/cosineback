@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Auth\AuthController;
 use App\Models\Orders;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
+
 
 class CheckoutController extends Controller
 {
     public function checkout(Request $request)
     {
+        // Log::info('price_id_from_env', []);
         $validator = Validator::make(
             $request->all(),
             [
@@ -20,8 +24,7 @@ class CheckoutController extends Controller
                     'string',
                     function ($attribute, $value, $fail) {
                         $validPriceIds = [
-                            env('NEXT_PUBLIC_266_PRICE_ID'),
-                            //  env('NEXT_PUBLIC_525_PRICE_ID')
+                            config('cashier.PRICE_ID')
                         ];
 
                         if (!in_array($value, $validPriceIds)) {
@@ -45,14 +48,14 @@ class CheckoutController extends Controller
         foreach ($request->line_items as $item) {
             $checkoutItems[$item['price_id']] = $item['quantity'];
             // You'll need to get the actual price from your price list
-            $price = $item['price_id'] === env('NEXT_PUBLIC_266_PRICE_ID') ? 60 : 525;
+            $price = $item['price_id'] === config('cashier.PRICE_ID') ? 60 : 525;
             $totalAmount += $price * $item['quantity'];
         }
-
+        $locale = App::currentLocale();
         $stripeLink = $user->checkout($checkoutItems, [
             'payment_method_types' => ['card', 'paypal'], // 'twint'
-            'success_url' => env('FRONT_END_URL') . 'account/orders',
-            'cancel_url' => env('FRONT_END_URL') . 'account/orders',
+            'success_url' => config('cashier.FRONT_END_URL') . '/' . $locale . '/account/orders',
+            'cancel_url' => config('cashier.FRONT_END_URL') . '/' . $locale . '/account/orders',
             'invoice_creation' => ['enabled' => true],
         ]);
 

@@ -30,8 +30,8 @@ class ReferralEarnings extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Nouveau gain de parrainage !',
-            from: new Address(env('MAIL_FROM_ADDRESS'), 'Helioz'),
+            subject: __('messages.referral_earnings.subject'),
+            from: new Address(config('mail.from.address'), config('COSINE')),
         );
     }
 

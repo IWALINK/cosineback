@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" style="color-scheme: light dark; supported-color-schemes: light dark; margin: 0; padding: 0; border: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%">
 <head>
-  <title>Merci pour votre commande </title>
+  <title>Merci pour votre commande !</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <!--[if !mso]><!-->
@@ -257,12 +257,12 @@
                     </table>
                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;min-width:100%">
                       <tr>
-                        <td align="left">
+                        <td align="center">
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt">
                             <tr>
                               <td valign="middle" style="color:#000000;font-size:20px;line-height:20px;font-weight:bold;vertical-align:middle">
                                 <a href="https://cosinelayer2.com/" target="_blank" rel="noreferrer">
-                                  <img src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75" alt="Klarna." width="98" height="98" border="0" style="display:block;outline:0;-ms-interpolation-mode:bicubic;width:98px;height:98px">
+                                  <img src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75" alt="COSINE" width="98" height="98" border="0" style="display:block;outline:0;-ms-interpolation-mode:bicubic;width:98px;height:98px">
                                 </a>
                               </td>
                             </tr>
@@ -280,15 +280,24 @@
                         <td height="30" style="font-size:30px;line-height:30px;height:30px"> </td>
                       </tr>
                     </table>
-                    <h1 style="font-family: 'Klarna Display', Arial,sans-serif; color: #0c0c0c; font-weight: bold; Margin-top: 0; Margin-bottom: 0; font-size: 36px; line-height: 40px">Merci pour votre commande #{{ $order->id }}!</h1>
+                    <h1 style="font-family: 'Klarna Display', Arial,sans-serif; color: #0c0c0c; font-weight: bold; Margin-top: 0; Margin-bottom: 0; font-size: 36px; line-height: 40px">{{ __('messages.order_email.thank_you_order_number', ['id' => $order->id]) }}</h1>
                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;min-width:100%">
                       <tr>
                         <td height="30" style="font-size:30px;line-height:30px;height:30px"> </td>
                       </tr>
                     </table>
-                    <p class="primary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: normal; font-size: 16px; line-height: 25px; Margin-top: 0; Margin-bottom: 0">Bonjour {{ $order->user_name }}! Votre commande a été confirmée et est en cours de traitement.</p>
-                    <p class="primary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: normal; font-size: 16px; line-height: 25px; Margin-top: 0; Margin-bottom: 0">
-                        Nous vous informons que les modules seront livrés en 2026 et précisons qu'il s'agit d'une pré-vente.
+
+                    <p class="primary" style="font-family:'Klarna Text', Arial,sans-serif;color:#0c0c0c;font-weight:normal;font-size:16px;line-height:25px;Margin-top:15px;Margin-bottom:0">
+                      {{ __('messages.order_email.confirmation_message') }}
+                    </p>
+
+                    <p class="primary" style="font-family:'Klarna Text', Arial,sans-serif;color:#0c0c0c;font-weight:normal;font-size:16px;line-height:25px;Margin-top:15px;Margin-bottom:0">
+                      {{ __('messages.order_email.thank_you_trust') }}
+                    </p>
+
+                    <p class="primary" style="font-family:'Klarna Text', Arial,sans-serif;color:#0c0c0c;font-weight:normal;font-size:16px;line-height:25px;Margin-top:15px;Margin-bottom:0">
+                      {{ __('messages.order_email.regards') }}<br>
+                      {{ __('messages.order_email.team_signature') }}
                     </p>
 
                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;min-width:100%">
@@ -296,12 +305,7 @@
                         <td height="30" style="font-size:30px;line-height:30px;height:30px"> </td>
                       </tr>
                     </table>
-                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;min-width:100%">
-                      <tr>
-                        <td height="30" style="font-size:30px;line-height:30px;height:30px"> </td>
-                      </tr>
-                    </table>
-                    <h3 style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: bold; Margin-top: 0; Margin-bottom: 0; font-size: 19px; line-height: 25px">Détails de la commande</h3>
+                    <h3 style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: bold; Margin-top: 0; Margin-bottom: 0; font-size: 19px; line-height: 25px">{{ __('messages.order_email.order_details') }}</h3>
                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;min-width:100%">
                       <tr>
                         <td height="15" style="font-size:15px;line-height:15px;height:15px"> </td>
@@ -318,8 +322,8 @@
                           <span class="primary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: normal; font-size: 16px; line-height: 20px">
                             {{ $item->description }}<br>
                             <span style="font-size: 14px; color: #555555;">
-                              Prix de base: {{ number_format($item->price->unit_amount / 100, 2) }} CHF<br>
-                              Type: {{ ($item->price->unit_amount / 100) == 525.00 ? 'Achat avec revenu' : 'Achat pour usage' }}
+                              {{ __('messages.order_email.base_price') }}: {{ number_format($item->price->unit_amount / 100, 2) }} CHF<br>
+                              {{-- Type: {{ ($item->price->unit_amount / 100) == 525.00 ? 'Achat avec revenu' : 'Achat pour usage' }} --}}
                             </span>
                           </span>
                         </td>
@@ -339,18 +343,8 @@
                         </td>
                       </tr>
                       <tr>
-                        <td height="1" style="font-size:1px;line-height:1px;height:1px"> </td>
-                        <td colspan="2" height="1">
-                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;min-width:100%">
-                            <tr>
-                              <td class="divider-line" height="1" style="font-size: 1px; line-height: 1px; height: 1px; background-color: #EEEEEE"> </td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                      <tr>
                         <td colspan="2" align="left" valign="middle" style="vertical-align:middle;padding-top:20px;padding-bottom:20px">
-                          <span class="primary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: normal; font-size: 16px; line-height: 20px">Total</span>
+                          <span class="primary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: normal; font-size: 16px; line-height: 20px">{{ __('messages.order_email.total' ) }}</span>
                         </td>
                         <td align="right" valign="middle" style="vertical-align:middle;padding-top:20px;padding-bottom:20px;padding-left:15px;white-space:nowrap">
                           <span class="primary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #0c0c0c; font-weight: bold; font-size: 16px; line-height: 20px">{{ number_format($order->total_amount, 2) }} CHF</span>
@@ -369,18 +363,18 @@
                             <v:roundrect
                               xmlns:v="urn:schemas-microsoft-com:vml"
                               xmlns:w="urn:schemas-microsoft-com:office:word"
-                              href="https://app.klarna.com/transactions/internal/ef449cd6-bde6-447b-b59f-232457072449/details"
+                              href="{{ $order->invoice_url }}"
                               style="v-text-anchor:middle;height:40px;width:200px;"
                               arcsize="50%"
                               stroke="f"
                               fillcolor="#0c0c0c">
                               <w:anchorlock/>
-                              <center style="font-family:'Klarna Text', Arial,sans-serif;font-weight:bold;font-size:16px;line-height:18px;color:#FEFEFE;">Voir dans l'app Klarna</center>
+                              <center style="font-family:'Klarna Text', Arial,sans-serif;font-weight:bold;font-size:16px;line-height:18px;color:#FEFEFE;">{{ __('messages.order_email.view_invoice') }}</center>
                             </v:roundrect>
                           <![endif]-->
                           <!--[if !mso]><!-->
                           <a class="btn-a-primary" href="{{ $order->invoice_url }}" target="_blank" rel="noreferrer" style="text-align: center; text-decoration: none; display: inline-block; font-family: 'Klarna Text', Arial,sans-serif; color: #FEFEFE; font-weight: bold; font-size: 16px; line-height: 18px; padding: 12px 20px; border-radius: 21px; background-color: #0c0c0c; mso-hide: all">
-                            Voir la Facture
+                            {{ __('messages.order_email.view_invoice') }}
                           </a>
                           <!-- <![endif]-->
                         </td>
@@ -401,7 +395,7 @@
               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt">
                 <tr>
                   <td align="center" style="font-family:'Klarna Text', Arial,sans-serif;color:#FEFEFE;font-weight:bold;font-size:16px;line-height:25px;text-decoration:none !important">
-                    <a class="standalone" href="https://app.klarna.com/transactions/internal/ef449cd6-bde6-447b-b59f-232457072449/details" target="_blank" rel="noreferrer" style="font-family: 'Klarna Text', Arial,sans-serif; color: #4A20BA; font-weight: bold; font-size: 16px; line-height: 25px; text-decoration: none !important">Voir plus d'informations dans l'app Klarna</a>
+                    <a class="standalone" href="https://app.klarna.com/transactions/internal/ef449cd6-bde6-447b-b59f-232457072449/details" target="_blank" rel="noreferrer" style="font-family: 'Klarna Text', Arial,sans-serif; color: #4A20BA; font-weight: bold; font-size: 16px; line-height: 25px; text-decoration: none !important">{{ __('messages.order_email.view_more_info') }}</a>
                   </td>
                 </tr>
               </table>
@@ -426,25 +420,13 @@
                               <td height="30" style="font-size:30px;line-height:30px;height:30px"> </td>
                             </tr>
                           </table>
-                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt">
-                            <tr>
-                              <td valign="middle" style="color:#000000;font-size:20px;line-height:20px;font-weight:bold;vertical-align:middle">
-                                <a href="https://cosinelayer2.com/" target="_blank" rel="noreferrer">
-                                  <img src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75" alt="Klarna." width="98" height="98" border="0" style="display:block;outline:0;-ms-interpolation-mode:bicubic;width:98px;height:98px">
-                                </a>
-                              </td>
-                            </tr>
-                          </table>
+
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;min-width:100%">
                             <tr>
                               <td height="30" style="font-size:30px;line-height:30px;height:30px"> </td>
                             </tr>
                           </table>
-                          <p class="secondary" style="font-family: 'Klarna Text', Arial,sans-serif; color: #555555; font-weight: normal; font-size: 14px; line-height: 20px; Margin-top: 0; Margin-bottom: 0">
-                            {{ env('APP_NAME') }}<br>
-                            <span class="nolink" style="font-family:inherit !important;font-size:inherit !important;font-weight:inherit !important;line-height:inherit !important;color:inherit !important;text-decoration:none !important;cursor:text">{{ env('COMPANY_PHONE') }}</span><br>
-                            <span class="nolink" style="font-family:inherit !important;font-size:inherit !important;font-weight:inherit !important;line-height:inherit !important;color:inherit !important;text-decoration:none !important;cursor:text">{{ env('COMPANY_ADDRESS') }}</span>
-                          </p>
+
                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="margin:0;padding:0;border:0;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;min-width:100%">
                             <tr>
                               <td height="15" style="font-size:15px;line-height:15px;height:15px"> </td>

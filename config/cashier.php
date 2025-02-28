@@ -19,6 +19,8 @@ return [
     'key' => env('STRIPE_KEY'),
 
     'secret' => env('STRIPE_SECRET'),
+    "PRICE_ID" => env('PRICE_ID'),
+    "FRONT_END_URL" => env('FRONT_END_URL'),
 
     /*
     |--------------------------------------------------------------------------

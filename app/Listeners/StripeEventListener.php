@@ -35,7 +35,7 @@ class StripeEventListener
     public function handle(WebhookReceived $event): void
     {
         if ($event->payload['type'] === 'checkout.session.completed') {
-            Stripe::setApiKey(env('STRIPE_SECRET'));
+            Stripe::setApiKey(config('cashier.secret'));
             $invoices = Invoice::retrieve($event->payload["data"]["object"]["invoice"]);
             $session = $event->payload['data']['object'];
             $sessionId = $session['id'];

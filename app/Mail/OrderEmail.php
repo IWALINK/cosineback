@@ -30,8 +30,8 @@ class OrderEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Merci pour votre commande # ' . $this->order->id,
-            from: new Address(env('MAIL_FROM_ADDRESS'), env('APP_NAME')),
+            subject: __('messages.order_email.subject', ['id' => $this->order->id]),
+            from: new Address(config('mail.from.address'), config('COSINE')),
         );
     }
 

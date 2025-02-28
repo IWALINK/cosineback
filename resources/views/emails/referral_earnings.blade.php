@@ -369,13 +369,6 @@
       &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
       &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
       &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
-      &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
-      &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
-      &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
-      &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
-      &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
-      &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
-      &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
     </div>
     <div
       role="article"
@@ -405,12 +398,11 @@
                     <h1
                       class="m-0 mb-6 text-2xl sm:leading-8 text-black font-semibold"
                     >
-                      Bravo,
+                      {{ __('messages.referral_earnings.congratulations') }}
                     </h1>
 
                     <p class="m-0 leading-6">
-                      {{ $data['full_name'] }}, que vous avez parrainé(e), vient
-                      de vous faire gagner la somme de {{ $data['amount'] }}.
+                      {!! __('messages.referral_earnings.referral_message', ['full_name' => $data['full_name'], 'amount' => $data['amount']]) !!}
                     </p>
 
                     <div role="separator" style="line-height: 24px">&zwj;</div>
@@ -430,7 +422,7 @@
                           >
                         <![endif]-->
                         <span style="mso-text-raise: 16px">
-                          Voir vos gain sur COSINE
+                          {{ __('messages.referral_earnings.view_earnings') }}
                         </span>
                         <!--[if mso]>
                           <i class="mso-font-width-[150%]" hidden=""
@@ -455,11 +447,10 @@
                     </div>
 
                     <p class="m-0">
-                      Si vous ne vous êtes pas inscrit à COSINE, vous pouvez
-                      ignorer cet e-mail en toute sécurité.
+                      {{ __('messages.referral_earnings.if_not_registered') }}
                       <br />
                       <br />
-                      Merci, <br />L'équipe COSINE
+                      {{ __('messages.referral_earnings.thank_you') }} <br />{{ __('messages.referral_earnings.team') }}
                     </p>
                   </td>
                 </tr>
@@ -479,7 +470,7 @@
                     </div>
 
                     <p class="m-5 italic">
-                      Annule le stress et économise du temps
+                      {{ __('messages.email_confirmation.cancel_stress_and_save_time') }}
                     </p>
 
                     <p class="cursor-default">

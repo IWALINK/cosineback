@@ -420,22 +420,22 @@
                                 <td class="sm-px-6" style="border-radius: 4px; background-color: #fffffe; padding: 48px; font-size: 16px; color: #334155; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05)">
                                     <?php
                                     $heure = date('H');
-                                    $salutation = $heure >= 6 && $heure < 18 ? 'Bonjour' : 'Bonsoir';
+                                    $greeting = $heure >= 6 && $heure < 18 ? __('messages.reset_password.greeting_day') : __('messages.reset_password.greeting_night');
                                     ?>
                                     <h1 class="sm-leading-8" style="margin: 0 0 24px; font-size: 24px; font-weight: 600; color: #000001">
-                                        {{ $salutation }},
+                                        {{ $greeting }}
                                     </h1>
                                     <p style="margin: 0; line-height: 24px">
-                                        Vous avez oublié votre mot de passe ? Pas de souci ! Ça arrive à tout le monde.
+                                        {{ __('messages.reset_password.forgot_password') }}
                                         <br>
                                         <br>
-                                        Entrez ce code dans l'application pour changer votre mot de passe :
+                                        {{ __('messages.reset_password.enter_code') }}
                                     </p>
                                     <div role="separator" style="line-height: 24px">&zwj;</div>
                                     <div>
                                         <span style="color: #f8fafc; background-color: #000000; display: inline-block; border-radius: 4px; padding: 16px 24px; font-size: 16px; line-height: 1; font-weight: 600; text-decoration: none">
                                             <!--[if mso]><i style="mso-text-raise: 30px" hidden="">&emsp;</i><![endif]-->
-                                            <span style="mso-text-raise: 16px"> Code: {{ $data['requestCode'] }} </span>
+                                            <span style="mso-text-raise: 16px"> {{ __('messages.reset_password.code_prefix') }} {{ $data['requestCode'] }} </span>
                                             <!--[if mso]><i hidden="">&emsp;&#8203;</i><![endif]-->
                                         </span>
                                     </div>
@@ -443,10 +443,10 @@
                                         &zwj;
                                     </div>
                                     <p style="margin: 0;">
-                                        Si vous ne vous êtes pas inscrit à COSINE, vous pouvez ignorer cet e-mail en toute sécurité.
+                                        {{ __('messages.reset_password.if_not_registered') }}
                                         <br>
                                         <br>
-                                        Merci, <br>L'équipe COSINE
+                                        {{ __('messages.reset_password.thank_you') }} <br>{{ __('messages.reset_password.team') }}
                                     </p>
                                 </td>
                             </tr>
@@ -461,7 +461,7 @@
                                         </a>
                                     </div>
                                     <p style="font-style: italic">
-                                        Annule le stress et économise du temps
+                                        {{ __('messages.email_confirmation.cancel_stress_and_save_time') }}
                                     </p>
                                     <p style="cursor: default">
                                         <a href="https://www.facebook.com/profile.php?id=61562893141673" class="hover-important-text-decoration-underline" style="color: red; text-decoration: none">Facebook</a>

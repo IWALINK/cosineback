@@ -28,8 +28,8 @@ class EmailConfirmation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Code de vérification',
-            from: new Address(config('mail.from.address') ?? 'noreply@iwalink.ch', 'COSINE'),
+            subject: __('messages.email_confirmation.subject'),
+            from: new Address(config('mail.from.address'), 'COSINE'),
         );
     }
 
