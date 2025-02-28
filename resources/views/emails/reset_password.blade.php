@@ -401,10 +401,6 @@
 </head>
 
 <body style="margin: 0; width: 100%; background-color: #f8fafc; padding: 0; -webkit-font-smoothing: antialiased; word-break: break-word">
-        {{-- <div style="display: none">
-            Vous avez oublié votre mot de passe ? Pas de souci ! Ça arrive à tout le monde.
-            // ... existing hidden text ...
-        </div> --}}
     <div role="article" aria-roledescription="email" aria-label="Confirm your email address" lang="en">
         <div class="sm-px-4" style="background-color: #f8fafc; font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif">
             <table align="center" cellpadding="0" cellspacing="0" role="none">
@@ -412,7 +408,7 @@
                     <td style="width: 552px; max-width: 100%">
                         <div class="sm-my-8" style="margin-top: 48px; margin-bottom: 48px; text-align: center">
                             <a href="https://cosinelayer2.com/">
-                                <img src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75" width="70" alt="Maizzle" style="max-width: 100%; vertical-align: middle">
+                                <img src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75" width="70" alt="COSINE" style="max-width: 100%; vertical-align: middle">
                             </a>
                         </div>
                         <table cellpadding="0" cellspacing="0" role="none" style="width: 100%;">
@@ -457,7 +453,7 @@
                                 <td style="padding-left: 24px; padding-right: 24px; text-align: center; font-size: 12px; color: #475569">
                                     <div class="sm-my-8" style="text-align: center">
                                         <a href="https://cosinelayer2.com/">
-                                            <img src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75" width="70" alt="Maizzle" style="max-width: 100%; vertical-align: middle;">
+                                            <img src="https://cosinelayer2.com/_next/image?url=%2Fcosine.png&w=256&q=75" width="70" alt="COSINE" style="max-width: 100%; vertical-align: middle;">
                                         </a>
                                     </div>
                                     <p style="font-style: italic">
