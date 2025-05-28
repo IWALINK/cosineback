@@ -30,6 +30,8 @@ WORKDIR /var/www
 # Copy existing application directory contents
 COPY . .
 
+# Installer les dépendances
+RUN composer install --no-dev --optimize-autoloader
 # Set permissions
 RUN chown -R www-data:www-data /var/www
 
